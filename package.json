@@ -16,6 +16,7 @@
     "react-hot-toast": "^2.2.0",
     "react-icons": "^4.3.1",
     "react-loader-spinner": "^5.0.6",
+    "react-router-dom": "^6.2.1",
     "react-scripts": "4.0.3",
     "react-toastify": "^8.1.0",
     "shortid": "^2.2.16",
@@ -28,7 +29,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "netlify deploy -p",
     "prepare": "husky install"
   },
   "eslintConfig": {
@@ -37,7 +38,6 @@
       "react-app/jest"
     ]
   },
-  "homepage": "https://shellma2011.github.io/goit-react-hw-05-movies",
   "browserslist": {
     "production": [
       ">0.2%",
