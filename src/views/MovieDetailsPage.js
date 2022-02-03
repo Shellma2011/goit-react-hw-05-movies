@@ -40,7 +40,6 @@ const LinkReturn = styled(NavLink)`
   display: flex;
   justify-content: center;
   text-decoration: none;
-  /* border: 2px solid black; */
   padding: 10px 40px;
   color: black;
   font-weight: 500;
@@ -73,23 +72,28 @@ const Links = styled(NavLink)`
 `;
 
 export default function MovieDetailsPage() {
-  const [oneFilmObject, setOneFilmObject] = useState({});
+  const [oneFilmObj, setOneFilmObj] = useState({});
 
   let { moviesId } = useParams();
 
   const location = useLocation();
   const cameFrom = location?.state?.from ?? '/';
 
+  console.log(oneFilmObj);
+  console.log(moviesId);
+  console.log(location);
+  console.log(cameFrom);
+
   useEffect(() => {
     const oneMovie = async () => {
       await fetchMovieDetails(moviesId).then(data => {
-        setOneFilmObject(data);
+        setOneFilmObj(data);
       });
     };
     oneMovie();
   }, [moviesId]);
 
-  const { title, vote_average, overview, genres, poster_path } = oneFilmObject;
+  // const { title, vote_average, overview, genres, poster_path } = oneFilmObj;
   return (
     <>
       <LinkReturn to={cameFrom}>
@@ -97,15 +101,16 @@ export default function MovieDetailsPage() {
         Return to movies
       </LinkReturn>
       <Section>
-        <Img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt="" />
+        <Img src={`https://image.tmdb.org/t/p/w300${oneFilmObj.poster_path}`} alt="" />
         <FilmInfoContainer>
-          <MainMovieTitle>{title}</MainMovieTitle>
-          <Paragraph>User score: {vote_average * 10}%</Paragraph>
+          <MainMovieTitle>{oneFilmObj.title}</MainMovieTitle>
+          <Paragraph>User score: {oneFilmObj.vote_average * 10}%</Paragraph>
           <AboutTitle>Overview </AboutTitle>
-          <Paragraph>{overview}</Paragraph>
+          <Paragraph>{oneFilmObj.overview}</Paragraph>
           <GenresTitle>Genres</GenresTitle>
           <GenresList>
-            {genres && genres.map(({ name }) => <GenresItem key={name}>{name}</GenresItem>)}
+            {oneFilmObj.genres &&
+              oneFilmObj.genres.map(({ name }) => <GenresItem key={name}>{name}</GenresItem>)}
           </GenresList>
         </FilmInfoContainer>
       </Section>

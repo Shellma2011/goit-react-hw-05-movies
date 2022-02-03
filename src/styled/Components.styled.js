@@ -64,6 +64,9 @@ const Img = styled.img`
 `;
 
 const Form = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   margin-top: 15px;
   margin-bottom: 20px;
@@ -71,18 +74,24 @@ const Form = styled.form`
 
 const FormInput = styled.input`
   display: inline-block;
-  font: inherit;
+  /* font: inherit; */
   font-size: 20px;
   padding: 5px 20px;
 
-  border: 2px solid #e0ffff;
+  /* border: 2px solid #e0ffff; */
+  border: none;
   background-color: #4169e1;
 
-  border-radius: 5px;
+  border-radius: 25px;
   margin-right: 20px;
-  &::placeholder {
+  /* &::placeholder {
     font: inherit;
     font-size: 18px;
+  } */
+  &:hover {
+    color: #e0ffff;
+    /* border: 2px solid #e0ffff; */
+    /* border-color: #e0ffff; */
   }
 `;
 
@@ -97,11 +106,14 @@ const FormButtonLabel = styled.span`
   border: 0;
 `;
 
-const Button = styled.button`
-  display: inline-block;
-  width: 48px;
-  height: 48px;
+const SearchBtn = styled.button`
+  /* border: 2px solid #e0ffff; */
+  background-color: #e0ffff;
+
+  width: 38px;
+  height: 38px;
   border: 0;
+  border-radius: 25%;
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: center;
@@ -126,5 +138,5 @@ export {
   Form,
   FormInput,
   FormButtonLabel,
-  Button,
+  SearchBtn,
 };
