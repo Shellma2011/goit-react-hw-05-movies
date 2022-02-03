@@ -3,14 +3,23 @@ import { fetchMovie } from '../services/movie-API';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import styled from 'styled-components';
-import { MovieList, MovieItem, MovieText, Img } from '../styled/Components.styled';
+import {
+  Title,
+  CardInfoContainer,
+  // MainMovieTitle,
+  SecondaryMovieTitle,
+  MovieList,
+  MovieItem,
+  MovieText,
+  Img,
+} from '../styled/Components.styled';
 
-const Title = styled.h1`
-  text-align: center;
-  font-size: 28px;
-  margin-bottom: 20px;
-  color: black;
-`;
+// const Title = styled.h1`
+//   text-align: center;
+//   font-size: 28px;
+//   margin-bottom: 20px;
+//   color: black;
+// `;
 
 const LinkStyled = styled(NavLink)`
   color: black;
@@ -35,10 +44,12 @@ export default function HomePage() {
         {films.map(({ id, title, name, backdrop_path, vote_count, vote_average }) => (
           <MovieItem key={id}>
             <LinkStyled to={`/movies/${id}`} state={{ from: location }}>
-              <MovieText>{title ? title : name}</MovieText>
               <Img src={`https://image.tmdb.org/t/p/w300${backdrop_path}`} alt="" />
-              <MovieText>Vote: {vote_count}</MovieText>
-              <MovieText>Average rating: {vote_average}</MovieText>
+              <CardInfoContainer>
+                <SecondaryMovieTitle>{title ? title : name}</SecondaryMovieTitle>
+                <MovieText>Vote: {vote_count}</MovieText>
+                <MovieText>Average rating: {vote_average}</MovieText>
+              </CardInfoContainer>
             </LinkStyled>
           </MovieItem>
         ))}

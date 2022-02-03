@@ -3,7 +3,7 @@ import { useParams, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { fetchMovieDetails } from '../services/movie-API';
 
 import { BiArrowBack } from 'react-icons/bi';
-import { MovieTitle, Img } from '../styled/Components.styled';
+import { MainMovieTitle, Img } from '../styled/Components.styled';
 import styled from 'styled-components';
 
 const Section = styled.section`
@@ -99,7 +99,7 @@ export default function MovieDetailsPage() {
       <Section>
         <Img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt="" />
         <FilmInfoContainer>
-          <MovieTitle>{title}</MovieTitle>
+          <MainMovieTitle>{title}</MainMovieTitle>
           <Paragraph>User score: {vote_average * 10}%</Paragraph>
           <AboutTitle>Overview </AboutTitle>
           <Paragraph>{overview}</Paragraph>

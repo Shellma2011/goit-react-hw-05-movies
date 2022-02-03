@@ -79,25 +79,27 @@ export default function MoviesPage() {
       <Outlet />
       {searchFilms && (
         <MovieList>
-          {searchFilms.map(({ id, title, name, backdrop_path, vote_count, vote_average }) => (
-            <MovieItem key={id}>
-              <LinkStyled to={`/movies/${id}`} state={{ from: location }}>
-                <MovieText>{title ? title : name}</MovieText>
+          {searchFilms.map(
+            ({ id, title, name, backdrop_path, vote_count, vote_average, poster_path }) => (
+              <MovieItem key={id}>
+                <LinkStyled to={`/movies/${id}`} state={{ from: location }}>
+                  <MovieText>{title ? title : name}</MovieText>
 
-                <Img
-                  src={
-                    backdrop_path
-                      ? `https://image.tmdb.org/t/p/w300${backdrop_path}`
-                      : `https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-`
-                  }
-                  alt=""
-                />
+                  <Img
+                    src={
+                      backdrop_path
+                        ? `https://image.tmdb.org/t/p/w300${backdrop_path}`
+                        : `https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-`
+                    }
+                    alt=""
+                  />
 
-                <MovieText>Vote: {vote_count}</MovieText>
-                <MovieText>Average rating: {vote_average}</MovieText>
-              </LinkStyled>
-            </MovieItem>
-          ))}
+                  <MovieText>Vote: {vote_count}</MovieText>
+                  <MovieText>Average rating: {vote_average}</MovieText>
+                </LinkStyled>
+              </MovieItem>
+            ),
+          )}
         </MovieList>
       )}
     </>

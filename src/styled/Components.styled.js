@@ -1,46 +1,66 @@
 import styled from 'styled-components';
 
-const MovieTitle = styled.h2`
+const Title = styled.h1`
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #191970;
+`;
+
+const CardInfoContainer = styled.div`
+  padding: 0 10px;
+`;
+
+const MainMovieTitle = styled.h2`
   font-size: 26px;
   margin-top: 20px;
   margin-bottom: 10px;
-  color: black;
+  color: #191970;
+`;
+
+const SecondaryMovieTitle = styled.h3`
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #191970;
 `;
 
 const MovieList = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  display: grid;
+  max-width: calc(100vw - 48px);
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
 `;
 
 const MovieItem = styled.li`
-  background-color: #e7ecf2;
+  width: 280px;
+  height: 280px;
+  /* padding: 10px; */
+  background-color: #e0ffff; // бэкдроп под картинкой
 
-  height: 300px;
-  margin-bottom: 15px;
-  width: 350px;
   transform: scale(1);
   transition: transform 250ms linear;
-  text-align: center;
-  border-radius: 4px;
+  /* text-align: center; */
+  border-radius: 10px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
     0px 2px 1px -1px rgba(0, 0, 0, 0.12);
   :hover,
   :focus {
-    transform: scale(1.03);
-    cursor: zoom-in;
+    transform: scale(1.05);
+    /* cursor: zoom-in; */
   }
 `;
 const MovieText = styled.p`
-  margin-top: 10px;
   margin-bottom: 10px;
+  color: #191970;
+  font-size: 14px;
 `;
 
 const Img = styled.img`
-  border-radius: 4px;
+  border-radius: 5px;
   margin-right: auto;
   margin-left: auto;
-  width: 300px;
+  width: 280px;
 `;
 
 const Form = styled.form`
@@ -54,6 +74,10 @@ const FormInput = styled.input`
   font: inherit;
   font-size: 20px;
   padding: 5px 20px;
+
+  border: 2px solid #e0ffff;
+  background-color: #4169e1;
+
   border-radius: 5px;
   margin-right: 20px;
   &::placeholder {
@@ -91,7 +115,10 @@ const Button = styled.button`
 `;
 
 export {
-  MovieTitle,
+  CardInfoContainer,
+  Title,
+  MainMovieTitle,
+  SecondaryMovieTitle,
   MovieList,
   MovieItem,
   MovieText,

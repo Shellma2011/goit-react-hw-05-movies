@@ -10,12 +10,12 @@ const MoviesPage = lazy(() =>
 const MovieDetailsPage = lazy(() =>
   import('./views/MovieDetailsPage' /* webpackChunkName: "MovieDetailsPage-view" */),
 );
-const NotFound = lazy(() =>
-  import('./views/NotFoundView' /* webpackChunkName: "NotFoundView-view" */),
-);
 const Cast = lazy(() => import('./components/Cast/Cast' /* webpackChunkName: "Cast-view" */));
 const Reviews = lazy(() =>
   import('./components/Reviews/Reviews' /* webpackChunkName: "Reviews-view" */),
+);
+const NotFound = lazy(() =>
+  import('./views/NotFoundView' /* webpackChunkName: "NotFoundView-view" */),
 );
 
 export default function App() {

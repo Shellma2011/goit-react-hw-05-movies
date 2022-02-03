@@ -1,33 +1,19 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import { Nav, Container } from './Navigation.styled';
 import styled from 'styled-components';
-
-const Nav = styled.nav`
-  text-align: center;
-  border-bottom: 2px solid black;
-  padding-top: 20px;
-  padding-bottom: 20px;
-`;
 
 const NavigationLink = styled(NavLink)`
   padding: 10px 15px;
   margin-right: 15px;
-  border-radius: 5px;
+  border-radius: 25px;
   text-decoration: none;
-  color: black;
-  border: 2px solid black;
+  color: #4682b4;
+  border: 1px solid #4682b4;
   &.active {
-    color: orange;
-    border: 2px solid orange;
+    color: #e0ffff;
+    border: 2px solid #e0ffff;
+    background-color: #4169e1;
   }
-`;
-
-const Container = styled.div`
-  max-width: 1200px;
-  margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-right: auto;
-  margin-top: 20px;
 `;
 
 export const Layout = () => {
