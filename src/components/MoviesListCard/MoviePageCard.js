@@ -1,5 +1,6 @@
+import PropTypes from 'prop-types';
 import MovieItemCard from './MovieItem';
-import { MovieList } from '../../styled/Components.styled';
+import { MovieList } from '../../styled/CommonComponents.styled';
 
 // `;
 export default function MoviePageCard({ searchFilms }) {
@@ -19,3 +20,16 @@ export default function MoviePageCard({ searchFilms }) {
     </MovieList>
   );
 }
+
+MoviePageCard.propTypes = {
+  searchFilms: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string,
+      name: PropTypes.string,
+      backdrop_path: PropTypes.string,
+      vote_count: PropTypes.number,
+      vote_average: PropTypes.number,
+    }),
+  ),
+};

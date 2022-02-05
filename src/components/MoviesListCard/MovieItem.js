@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import {
@@ -6,7 +7,7 @@ import {
   MovieItem,
   MovieText,
   Img,
-} from '../../styled/Components.styled';
+} from '../../styled/CommonComponents.styled';
 
 const LinkStyled = styled(NavLink)`
   text-decoration: none;
@@ -34,3 +35,12 @@ export default function MovieItemCard({
     </MovieItem>
   );
 }
+
+MovieItemCard.propTypes = {
+  id: PropTypes.number,
+  title: PropTypes.string,
+  name: PropTypes.string,
+  backdrop_path: PropTypes.string,
+  vote_count: PropTypes.number,
+  vote_average: PropTypes.number,
+};

@@ -35,19 +35,17 @@ const MovieList = styled.ul`
 const MovieItem = styled.li`
   width: 280px;
   height: 280px;
-  /* padding: 10px; */
-  background-color: #e0ffff; // бэкдроп под картинкой
+  background-color: #e0ffff;
 
   transform: scale(1);
   transition: transform 250ms linear;
-  /* text-align: center; */
   border-radius: 10px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
     0px 2px 1px -1px rgba(0, 0, 0, 0.12);
   :hover,
   :focus {
     transform: scale(1.05);
-    /* cursor: zoom-in; */
+    cursor: pointer;
   }
 `;
 const MovieText = styled.p`
@@ -74,11 +72,8 @@ const Form = styled.form`
 
 const FormInput = styled.input`
   display: inline-block;
-  /* font: inherit; */
   font-size: 20px;
   padding: 5px 20px;
-
-  /* border: 2px solid #e0ffff; */
   border: none;
   background-color: #4169e1;
 
@@ -90,8 +85,6 @@ const FormInput = styled.input`
   } */
   &:hover {
     color: #e0ffff;
-    /* border: 2px solid #e0ffff; */
-    /* border-color: #e0ffff; */
   }
 `;
 
@@ -107,7 +100,6 @@ const FormButtonLabel = styled.span`
 `;
 
 const SearchBtn = styled.button`
-  /* border: 2px solid #e0ffff; */
   background-color: #e0ffff;
 
   width: 38px;

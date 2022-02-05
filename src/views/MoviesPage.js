@@ -6,7 +6,7 @@ import { FaSearch } from 'react-icons/fa';
 
 import MoviePageCard from '../components/MoviesListCard/MoviePageCard';
 
-import { Form, FormInput, SearchBtn } from '../styled/Components.styled';
+import { Form, FormInput, SearchBtn } from '../styled/CommonComponents.styled';
 
 export default function MoviesPage() {
   const [search, setSearch] = useState('');

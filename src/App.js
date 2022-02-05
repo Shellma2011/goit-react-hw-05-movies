@@ -14,8 +14,8 @@ const Cast = lazy(() => import('./components/Cast/Cast' /* webpackChunkName: "Ca
 const Reviews = lazy(() =>
   import('./components/Reviews/Reviews' /* webpackChunkName: "Reviews-view" */),
 );
-const NotFound = lazy(() =>
-  import('./views/NotFoundView' /* webpackChunkName: "NotFoundView-view" */),
+const NotFoundPage = lazy(() =>
+  import('./views/NotFoundPage' /* webpackChunkName: "NotFoundView-view" */),
 );
 
 export default function App() {
@@ -31,7 +31,7 @@ export default function App() {
               <Route path="cast" element={<Cast />} />
               <Route path="reviews" element={<Reviews />} />
             </Route>
-            <Route path="*" element={<NotFound />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
       </Suspense>

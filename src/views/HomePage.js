@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { fetchMovie } from '../services/movie-API';
 import MovieHomePageCard from '../components/MoviesListCard/MovieHomePageCard';
 
-import { Title } from '../styled/Components.styled';
+import { Title } from '../styled/CommonComponents.styled';
 
 export default function HomePage() {
   const [films, setFilms] = useState([]);
@@ -12,10 +12,8 @@ export default function HomePage() {
       await fetchMovie().then(data => setFilms(data.results));
     };
     fetchMovieList();
+    return;
   }, []);
-
-  console.log('films1:', films);
-  console.log('Object.keys(films1)', Object.keys(films));
 
   return (
     <article>

@@ -7,7 +7,6 @@ const KEY = '18f356f653c6d99c148d4b26445cb32c';
 export const fetchMovie = async () => {
   const URL = '3/trending/all/day?api_key=';
   const response = await axios.get(`${URL}${KEY}`);
-
   return response.data;
 };
 
@@ -18,8 +17,6 @@ export const fetchSearchMovie = async search => {
 };
 
 export const fetchMovieDetails = async id => {
-  // https://api.themoviedb.org/3/movie/343611?api_key={api_key}
-  // const response = await axios.get(`3/movie/${id}?api_key=${KEY}&language=en-US`);
   const response = await axios.get(`3/movie/${id}?api_key=${KEY}`);
   return response.data;
 };

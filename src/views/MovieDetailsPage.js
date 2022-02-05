@@ -3,7 +3,7 @@ import { useParams, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { fetchMovieDetails } from '../services/movie-API';
 
 import { BiArrowBack } from 'react-icons/bi';
-import { MainMovieTitle, Img } from '../styled/Components.styled';
+import { MainMovieTitle, Img, SecondaryMovieTitle } from '../styled/CommonComponents.styled';
 import styled from 'styled-components';
 
 const Section = styled.section`
@@ -17,18 +17,14 @@ const FilmInfoContainer = styled.div`
 `;
 const Paragraph = styled.div`
   margin-bottom: 15px;
-`;
-
-const AboutTitle = styled.h3`
-  margin-bottom: 20px;
-`;
-
-const GenresTitle = styled.h4`
-  margin-bottom: 20px;
+  font-size: 14px;
+  color: #191970;
 `;
 
 const GenresList = styled.ul`
   display: flex;
+  font-size: 14px;
+  color: #191970;
 `;
 
 const GenresItem = styled.li`
@@ -41,7 +37,7 @@ const LinkReturn = styled(NavLink)`
   justify-content: center;
   text-decoration: none;
   padding: 10px 40px;
-  color: black;
+  color: #191970;
   font-weight: 500;
   width: 300px;
   border-radius: 5px;
@@ -53,21 +49,32 @@ const LinkReturn = styled(NavLink)`
   }
 `;
 
-const Links = styled(NavLink)`
-  display: flex;
-  justify-content: center;
+const LinkCast = styled(NavLink)`
+  height: 45px;
+  padding: 10px 30px;
+  margin-right: 15px;
+  border-radius: 25px;
   text-decoration: none;
-  border: 2px solid black;
-  padding: 10px 40px;
-  color: black;
-  font-weight: 500;
-  width: 142px;
-  border-radius: 5px;
-  &.activ {
-    color: orange;
+  color: #4682b4;
+  border: 1px solid #4682b4;
+  &.active {
+    color: #e0ffff;
+    border: 2px solid #e0ffff;
+    background-color: #4169e1;
   }
-  :nth-child(1) {
-    margin-right: 16px;
+`;
+const LinkRewiews = styled(NavLink)`
+  height: 45px;
+  padding: 10px 15px;
+  margin-right: 15px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #4682b4;
+  border: 1px solid #4682b4;
+  &.active {
+    color: #e0ffff;
+    border: 2px solid #e0ffff;
+    background-color: #4169e1;
   }
 `;
 
@@ -79,21 +86,16 @@ export default function MovieDetailsPage() {
   const location = useLocation();
   const cameFrom = location?.state?.from ?? '/';
 
-  console.log(oneFilmObj);
-  console.log(moviesId);
-  console.log(location);
-  console.log(cameFrom);
-
   useEffect(() => {
-    const oneMovie = async () => {
-      await fetchMovieDetails(moviesId).then(data => {
+    const oneMovie = () => {
+      fetchMovieDetails(moviesId).then(data => {
         setOneFilmObj(data);
       });
     };
     oneMovie();
   }, [moviesId]);
 
-  // const { title, vote_average, overview, genres, poster_path } = oneFilmObj;
+  const { title, vote_average, overview, genres, poster_path } = oneFilmObj;
   return (
     <>
       <LinkReturn to={cameFrom}>
@@ -101,26 +103,24 @@ export default function MovieDetailsPage() {
         Return to movies
       </LinkReturn>
       <Section>
-        <Img src={`https://image.tmdb.org/t/p/w300${oneFilmObj.poster_path}`} alt="" />
+        <Img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt="" />
         <FilmInfoContainer>
-          <MainMovieTitle>{oneFilmObj.title}</MainMovieTitle>
-          <Paragraph>User score: {oneFilmObj.vote_average * 10}%</Paragraph>
-          <AboutTitle>Overview </AboutTitle>
-          <Paragraph>{oneFilmObj.overview}</Paragraph>
-          <GenresTitle>Genres</GenresTitle>
+          <MainMovieTitle>{title}</MainMovieTitle>
+          <SecondaryMovieTitle>User score: {vote_average * 10}%</SecondaryMovieTitle>
+          <SecondaryMovieTitle>Genres:</SecondaryMovieTitle>
           <GenresList>
-            {oneFilmObj.genres &&
-              oneFilmObj.genres.map(({ name }) => <GenresItem key={name}>{name}</GenresItem>)}
+            {genres && genres.map(({ name }) => <GenresItem key={name}>{name}</GenresItem>)}
           </GenresList>
+          <SecondaryMovieTitle>Overview </SecondaryMovieTitle>
+          <Paragraph>{overview}</Paragraph>
         </FilmInfoContainer>
-      </Section>
-      <Section>
-        <Links to={`/movies/${moviesId}/cast`} state={{ from: cameFrom }}>
+
+        <LinkCast to={`/movies/${moviesId}/cast`} state={{ from: cameFrom }}>
           Cast
-        </Links>
-        <Links to={`/movies/${moviesId}/reviews `} state={{ from: cameFrom }}>
+        </LinkCast>
+        <LinkRewiews to={`/movies/${moviesId}/reviews`} state={{ from: cameFrom }}>
           Reviews
-        </Links>
+        </LinkRewiews>
       </Section>
       <Section>
         <Outlet />
