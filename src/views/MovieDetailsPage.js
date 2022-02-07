@@ -80,9 +80,7 @@ const LinkRewiews = styled(NavLink)`
 
 export default function MovieDetailsPage() {
   const [oneFilmObj, setOneFilmObj] = useState({});
-
   let { moviesId } = useParams();
-
   const location = useLocation();
   const cameFrom = location?.state?.from ?? '/';
 

@@ -6,10 +6,10 @@ import { MovieList } from '../../styled/CommonComponents.styled';
 export default function MoviePageCard({ searchFilms }) {
   return (
     <MovieList>
-      {/* <MoviePageList> */}
       {searchFilms.map(({ id, title, name, backdrop_path, vote_count, vote_average }) => (
         <MovieItemCard
           key={id}
+          id={id}
           title={title}
           name={name}
           backdrop_path={backdrop_path}

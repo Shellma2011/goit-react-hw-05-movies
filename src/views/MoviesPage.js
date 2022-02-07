@@ -14,8 +14,6 @@ export default function MoviesPage() {
   const [searchFilms, setSearchFilms] = useState([]);
   const [searchParam, setSearchParam] = useSearchParams();
 
-  // const location = useLocation();
-
   useEffect(() => {
     if (searchParam.has('query')) {
       setSearchSubmit(searchParam.get('query'));
@@ -60,12 +58,10 @@ export default function MoviesPage() {
 
         <SearchBtn type="submit">
           <FaSearch fill="#191970" />
-          {/* <FormButtonLabel>Search</FormButtonLabel> */}
         </SearchBtn>
       </Form>
       <Outlet />
       {searchFilms && <MoviePageCard searchFilms={searchFilms} />}
-      {/* <MoviePageCard searchFilms={searchFilms} /> */}
     </>
   );
 }
